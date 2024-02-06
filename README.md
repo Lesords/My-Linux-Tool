@@ -1,1 +1,34 @@
-# My-Linux-Tool
+# Introduction
+
+This repository records some useful linux tools, as shown below
+
+- bat
+- ctags
+- diff-so-fancy
+- delta
+- icdiff
+- lazygit
+- rg
+- tokei
+- joshuto
+
+# Usage
+
+First you need to clone the repository.
+
+```bash
+git clone git@github.com:Lesords/My-Linux-Tool.git
+cd My-Linux-Tool
+```
+
+Then use the following command to download all tools.
+
+```bash
+./generate
+```
+
+Finally, use the following command to move all tools to `"$HOME/.local/bin"`.
+
+```bash
+./install
+```
