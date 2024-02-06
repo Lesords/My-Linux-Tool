@@ -70,6 +70,18 @@ tokei()
     tar zxvf $tokei && mv "tokei" ${bin_path}
 }
 
+joshuto()
+{
+    joshuto_version="v0.9.6"
+    joshuto="joshuto-${joshuto_version}-x86_64-unknown-linux-musl"
+    joshuto_url="https://github.com/kamiyaa/joshuto/releases/download/${joshuto_version}/${joshuto}.tar.gz"
+
+    curl -LJO $joshuto_url
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+    tar zxvf $joshuto.tar.gz && mv ${joshuto}/joshuto ${bin_path}
+}
+
 main()
 {
     [ ! -d ${bin_path} ] && mkdir ${bin_path}

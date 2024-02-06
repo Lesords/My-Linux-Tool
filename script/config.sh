@@ -8,4 +8,5 @@ bin_list=(
     lazygit
     rg
     tokei
+    joshuto
 )
