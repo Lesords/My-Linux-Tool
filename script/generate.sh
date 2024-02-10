@@ -82,6 +82,21 @@ joshuto()
     tar zxvf $joshuto.tar.gz && mv ${joshuto}/joshuto ${bin_path}
 }
 
+icdiff()
+{
+    git_icdiff="https://raw.githubusercontent.com/jeffkaufman/icdiff/master/git-icdiff"
+    icdiff="https://raw.githubusercontent.com/jeffkaufman/icdiff/master/icdiff"
+
+    curl -LJO $git_icdiff
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+    curl -LJO $icdiff
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+    chmod u+x "git-icdiff" && mv "git-icdiff" ${bin_path}
+    chmod u+x "icdiff" && mv "icdiff" ${bin_path}
+}
+
 main()
 {
     [ ! -d ${bin_path} ] && mkdir ${bin_path}

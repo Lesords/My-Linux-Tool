@@ -9,4 +9,5 @@ bin_list=(
     rg
     tokei
     joshuto
+    icdiff
 )
