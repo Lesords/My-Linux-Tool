@@ -97,6 +97,18 @@ icdiff()
     chmod u+x "icdiff" && mv "icdiff" ${bin_path}
 }
 
+delta()
+{
+    delta_version="0.16.5"
+    delta="git-delta-musl_${delta_version}_amd64.deb"
+    delta_url="https://github.com/dandavison/delta/releases/download/${delta_version}/${delta}"
+
+    curl -LJO $delta_url
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+    dpkg -x ${delta} . && mv "usr/bin/delta" ${bin_path}
+}
+
 main()
 {
     [ ! -d ${bin_path} ] && mkdir ${bin_path}

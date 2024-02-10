@@ -10,4 +10,5 @@ bin_list=(
     tokei
     joshuto
     icdiff
+    delta
 )
