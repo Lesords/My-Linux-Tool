@@ -11,4 +11,5 @@ bin_list=(
     joshuto
     icdiff
     delta
+    fzf
 )

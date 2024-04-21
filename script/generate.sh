@@ -109,6 +109,18 @@ delta()
     dpkg -x ${delta} . && mv "usr/bin/delta" ${bin_path}
 }
 
+fzf()
+{
+    fzf_version="0.50.0"
+    fzf="fzf-${fzf_version}-linux_amd64.tar.gz"
+    fzf_url="https://github.com/junegunn/fzf/releases/download/${fzf_version}/${fzf}"
+
+    curl -LJO $fzf_url
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+    tar zxvf $fzf && mv "fzf" ${bin_path}
+}
+
 main()
 {
     [ ! -d ${bin_path} ] && mkdir ${bin_path}
