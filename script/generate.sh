@@ -121,6 +121,21 @@ fzf()
     tar zxvf $fzf && mv "fzf" ${bin_path}
 }
 
+gtags()
+{
+    cwd=$PWD
+    gtags_version="6.6.12"
+    gtags="global-${gtags_version}.tar.gz"
+    gtags_url="https://ftp.gnu.org/gnu/global/${gtags}"
+
+    curl -LJO $gtags_url && tar zxvf $gtags
+
+    cd "global-${gtags_version}" && mkdir build
+    ./configure --prefix=$PWD/build && make -j5 && make install && mv build/bin/* ${bin_path}
+
+    cd $cwd
+}
+
 main()
 {
     [ ! -d ${bin_path} ] && mkdir ${bin_path}

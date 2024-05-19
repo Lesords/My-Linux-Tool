@@ -12,4 +12,5 @@ bin_list=(
     icdiff
     delta
     fzf
+    gtags
 )
