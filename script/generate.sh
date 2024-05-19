@@ -128,6 +128,11 @@ main()
     mkdir tmp && cd tmp
 
     for i in ${bin_list[@]}; do
+        if [ -f "$bin_path/$i" ]; then
+            echo "=== ${i} already done here ===" && echo
+            continue
+        fi
+
         echo "=== start to download ${i} ==="
         $i
         if [ $? -eq 0 ]; then
