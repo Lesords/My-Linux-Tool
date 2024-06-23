@@ -13,4 +13,5 @@ bin_list=(
     delta
     fzf
     gtags
+    clangd
 )

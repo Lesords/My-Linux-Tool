@@ -136,6 +136,16 @@ gtags()
     cd $cwd
 }
 
+clangd()
+{
+    clangd="clangd-10_10.0.0-4ubuntu1~18.04.2_amd64.deb"
+    clangd_url="https://launchpadlibrarian.net/488890559/${clangd}"
+
+    curl -LJO $clangd_url
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+    dpkg -x ${clangd} . && mv "`realpath usr/bin/clangd*`" ${bin_path}
+}
+
 main()
 {
     [ ! -d ${bin_path} ] && mkdir ${bin_path}
