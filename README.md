@@ -5,12 +5,15 @@ This repository records some useful linux tools, as shown below
 - bat
 - ctags
 - diff-so-fancy
-- delta
-- icdiff
 - lazygit
 - rg
 - tokei
 - joshuto
+- icdiff
+- delta
+- fzf
+- gtags
+- clangd
 
 # Usage
 
