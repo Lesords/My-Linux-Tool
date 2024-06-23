@@ -14,4 +14,5 @@ bin_list=(
     fzf
     gtags
     clangd
+    bear
 )

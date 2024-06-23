@@ -146,6 +146,16 @@ clangd()
     dpkg -x ${clangd} . && mv "`realpath usr/bin/clangd*`" ${bin_path}
 }
 
+bear()
+{
+    bear="bear_2.4.3-1_all.deb"
+    bear_url="https://launchpadlibrarian.net/462421353/${bear}"
+
+    curl -LJO $bear_url
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+    dpkg -x ${bear} . && mv "usr/bin/bear" ${bin_path}
+}
+
 main()
 {
     [ ! -d ${bin_path} ] && mkdir ${bin_path}
