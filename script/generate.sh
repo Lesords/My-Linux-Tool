@@ -140,10 +140,22 @@ clangd()
 {
     clangd="clangd-10_10.0.0-4ubuntu1~18.04.2_amd64.deb"
     clangd_url="https://launchpadlibrarian.net/488890559/${clangd}"
+    libclangd="libclang-cpp10_10.0.0-4ubuntu1_amd64.deb"
+    libclangd_url="http://launchpadlibrarian.net/475399973/${libclangd}"
+    libllvm="libllvm10_10.0.0-4ubuntu1_amd64.deb"
+    libllvm_url="http://launchpadlibrarian.net/475399976/${libllvm}"
 
     curl -LJO $clangd_url
     [ $? -ne 0 ] && echo "curl failed here" && return 1
     dpkg -x ${clangd} . && mv "`realpath usr/bin/clangd*`" ${bin_path}
+
+    curl -LJO $libclangd_url
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+    dpkg -x ${libclangd} . && mv "usr/lib/llvm-10/lib/libclang-cpp.so.10" ${lib_path}
+
+    curl -LJO $libllvm_url
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+    dpkg -x ${libllvm} . && mv "usr/lib/x86_64-linux-gnu/libLLVM-10.so.1" ${lib_path}
 }
 
 bear()
@@ -159,6 +171,7 @@ bear()
 main()
 {
     [ ! -d ${bin_path} ] && mkdir ${bin_path}
+    [ ! -d ${lib_path} ] && mkdir ${lib_path}
     [ -d tmp ] && rm -rf ./tmp
     mkdir tmp && cd tmp
 

@@ -1,6 +1,7 @@
 #!/bin/bash
 
 bin_path="$PWD/bin"
+lib_path="$PWD/lib"
 bin_list=(
     bat
     ctags
