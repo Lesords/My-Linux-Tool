@@ -162,10 +162,16 @@ bear()
 {
     bear="bear_2.4.3-1_all.deb"
     bear_url="https://launchpadlibrarian.net/462421353/${bear}"
+    libear="libear_2.4.3-1_amd64.deb"
+    libear_url="http://launchpadlibrarian.net/462421356/${libear}"
 
     curl -LJO $bear_url
     [ $? -ne 0 ] && echo "curl failed here" && return 1
     dpkg -x ${bear} . && mv "usr/bin/bear" ${bin_path}
+
+    curl -LJO $libear_url
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+    dpkg -x ${libear} . && mv "usr/lib/x86_64-linux-gnu/bear/libear.so" ${lib_path}
 }
 
 main()
