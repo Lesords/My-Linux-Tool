@@ -37,7 +37,7 @@ diff-so-fancy()
 
 lazygit()
 {
-    lazygit_version="0.40.2"
+    lazygit_version="0.42.0"
     lazygit="lazygit_${lazygit_version}_Linux_x86_64"
     lazygit_url="https://github.com/jesseduffield/lazygit/releases/download/v${lazygit_version}/${lazygit}.tar.gz"
 
