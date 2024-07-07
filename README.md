@@ -14,6 +14,7 @@ This repository records some useful linux tools, as shown below
 - fzf
 - gtags
 - clangd
+- bear
 
 # Usage
 
