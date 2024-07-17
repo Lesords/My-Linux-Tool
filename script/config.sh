@@ -16,4 +16,5 @@ bin_list=(
     gtags
     clangd
     bear
+    ttyper
 )
