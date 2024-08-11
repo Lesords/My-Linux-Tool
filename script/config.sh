@@ -17,4 +17,5 @@ bin_list=(
     clangd
     bear
     ttyper
+    fd
 )

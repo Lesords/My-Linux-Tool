@@ -186,6 +186,18 @@ ttyper()
     tar zxvf ${ttyper}.tar.gz && mv ttyper ${bin_path}
 }
 
+fd()
+{
+    fd_version="v10.1.0"
+    fd="fd-${fd_version}-x86_64-unknown-linux-musl"
+    fd_url="https://github.com/sharkdp/fd/releases/download/${fd_version}/${fd}.tar.gz"
+
+    curl -LJO $fd_url
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+    tar zxvf $fd.tar.gz && mv ${fd}/fd ${bin_path}
+}
+
 main()
 {
     [ ! -d ${bin_path} ] && mkdir ${bin_path}
