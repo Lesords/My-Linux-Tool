@@ -198,6 +198,17 @@ fd()
     tar zxvf $fd.tar.gz && mv ${fd}/fd ${bin_path}
 }
 
+hexyl() {
+    hexyl_version="v0.14.0"
+    hexyl="hexyl-${hexyl_version}-x86_64-unknown-linux-musl"
+    hexyl_url="https://github.com/sharkdp/hexyl/releases/download/${hexyl_version}/${hexyl}.tar.gz"
+
+    curl -LJO $hexyl_url
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+    tar zxvf $hexyl.tar.gz && mv ${hexyl}/hexyl ${bin_path}
+}
+
 main()
 {
     [ ! -d ${bin_path} ] && mkdir ${bin_path}

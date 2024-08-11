@@ -18,4 +18,5 @@ bin_list=(
     bear
     ttyper
     fd
+    hexyl
 )
