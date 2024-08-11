@@ -19,4 +19,5 @@ bin_list=(
     ttyper
     fd
     hexyl
+    btop
 )

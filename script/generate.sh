@@ -209,6 +209,17 @@ hexyl() {
     tar zxvf $hexyl.tar.gz && mv ${hexyl}/hexyl ${bin_path}
 }
 
+btop() {
+    btop_version="v1.3.2"
+    btop="btop-x86_64-linux-musl.tbz"
+    btop_url="https://github.com/aristocratos/btop/releases/download/${btop_version}/${btop}"
+
+    curl -LJO $btop_url
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+    tar xvf $btop && mv btop/bin/btop ${bin_path}
+}
+
 main()
 {
     [ ! -d ${bin_path} ] && mkdir ${bin_path}
