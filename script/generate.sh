@@ -4,7 +4,7 @@ source "./script/config.sh"
 
 bat()
 {
-    bat_version="v0.24.0"
+    bat_version="v0.25.0"
     bat="bat-${bat_version}-x86_64-unknown-linux-gnu"
     bat_url="https://github.com/sharkdp/bat/releases/download/${bat_version}/${bat}.tar.gz"
 
@@ -37,7 +37,7 @@ diff-so-fancy()
 
 lazygit()
 {
-    lazygit_version="0.42.0"
+    lazygit_version="0.45.2"
     lazygit="lazygit_${lazygit_version}_Linux_x86_64"
     lazygit_url="https://github.com/jesseduffield/lazygit/releases/download/v${lazygit_version}/${lazygit}.tar.gz"
 
@@ -61,8 +61,9 @@ rg()
 
 tokei()
 {
+    tokei_version="v13.0.0-alpha.0"
     tokei="tokei-x86_64-unknown-linux-gnu.tar.gz"
-    tokei_url="https://github.com/XAMPPRocky/tokei/releases/download/v13.0.0-alpha.0/${tokei}"
+    tokei_url="https://github.com/XAMPPRocky/tokei/releases/download/${tokei_version}/${tokei}"
 
     curl -LJO $tokei_url
     [ $? -ne 0 ] && echo "curl failed here" && return 1
@@ -99,7 +100,7 @@ icdiff()
 
 delta()
 {
-    delta_version="0.16.5"
+    delta_version="0.18.2"
     delta="git-delta-musl_${delta_version}_amd64.deb"
     delta_url="https://github.com/dandavison/delta/releases/download/${delta_version}/${delta}"
 
@@ -111,9 +112,9 @@ delta()
 
 fzf()
 {
-    fzf_version="0.50.0"
+    fzf_version="0.58.0"
     fzf="fzf-${fzf_version}-linux_amd64.tar.gz"
-    fzf_url="https://github.com/junegunn/fzf/releases/download/${fzf_version}/${fzf}"
+    fzf_url="https://github.com/junegunn/fzf/releases/download/v${fzf_version}/${fzf}"
 
     curl -LJO $fzf_url
     [ $? -ne 0 ] && echo "curl failed here" && return 1
@@ -176,8 +177,9 @@ bear()
 
 ttyper()
 {
+    ttyper_version="v1.6.0"
     ttyper="ttyper-x86_64-unknown-linux-musl"
-    ttyper_url="https://github.com/max-niederman/ttyper/releases/download/v1.5.0/${ttyper}.tar.gz"
+    ttyper_url="https://github.com/max-niederman/ttyper/releases/download/${ttyper_version}/${ttyper}.tar.gz"
 
     curl -LJO $ttyper_url
     [ $? -ne 0 ] && echo "curl failed here" && return 1
@@ -188,7 +190,7 @@ ttyper()
 
 fd()
 {
-    fd_version="v10.1.0"
+    fd_version="v10.2.0"
     fd="fd-${fd_version}-x86_64-unknown-linux-musl"
     fd_url="https://github.com/sharkdp/fd/releases/download/${fd_version}/${fd}.tar.gz"
 
@@ -199,7 +201,7 @@ fd()
 }
 
 hexyl() {
-    hexyl_version="v0.14.0"
+    hexyl_version="v0.16.0"
     hexyl="hexyl-${hexyl_version}-x86_64-unknown-linux-musl"
     hexyl_url="https://github.com/sharkdp/hexyl/releases/download/${hexyl_version}/${hexyl}.tar.gz"
 
@@ -210,7 +212,7 @@ hexyl() {
 }
 
 btop() {
-    btop_version="v1.3.2"
+    btop_version="v1.4.0"
     btop="btop-x86_64-linux-musl.tbz"
     btop_url="https://github.com/aristocratos/btop/releases/download/${btop_version}/${btop}"
 
