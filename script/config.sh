@@ -20,4 +20,5 @@ bin_list=(
     fd
     hexyl
     btop
+    fastfetch
 )

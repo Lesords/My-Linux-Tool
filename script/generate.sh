@@ -222,6 +222,17 @@ btop() {
     tar xvf $btop && mv btop/bin/btop ${bin_path}
 }
 
+fastfetch() {
+    fastfetch_version="2.35.0"
+    fastfetch="fastfetch-musl-amd64"
+    fastfetch_url="https://github.com/fastfetch-cli/fastfetch/releases/download/${fastfetch_version}/${fastfetch}.tar.gz"
+
+    curl -LJO $fastfetch_url
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+    tar zxvf ${fastfetch}.tar.gz && mv ${fastfetch}/usr/bin/fastfetch ${bin_path}
+}
+
 main()
 {
     [ ! -d ${bin_path} ] && mkdir ${bin_path}
