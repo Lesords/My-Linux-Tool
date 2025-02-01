@@ -21,4 +21,5 @@ bin_list=(
     hexyl
     btop
     fastfetch
+    hyperfine
 )

@@ -233,6 +233,17 @@ fastfetch() {
     tar zxvf ${fastfetch}.tar.gz && mv ${fastfetch}/usr/bin/fastfetch ${bin_path}
 }
 
+hyperfine() {
+    hyperfine_version="v1.19.0"
+    hyperfine="hyperfine-${hyperfine_version}-x86_64-unknown-linux-musl"
+    hyperfine_url="https://github.com/sharkdp/hyperfine/releases/download/${hyperfine_version}/${hyperfine}.tar.gz"
+
+    curl -LJO $hyperfine_url
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+    tar zxvf ${hyperfine}.tar.gz && mv ${hyperfine}/hyperfine ${bin_path}
+}
+
 main()
 {
     [ ! -d ${bin_path} ] && mkdir ${bin_path}
