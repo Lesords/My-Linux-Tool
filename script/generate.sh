@@ -200,7 +200,8 @@ fd()
     tar zxvf $fd.tar.gz && mv ${fd}/fd ${bin_path}
 }
 
-hexyl() {
+hexyl()
+{
     hexyl_version="v0.16.0"
     hexyl="hexyl-${hexyl_version}-x86_64-unknown-linux-musl"
     hexyl_url="https://github.com/sharkdp/hexyl/releases/download/${hexyl_version}/${hexyl}.tar.gz"
@@ -211,7 +212,8 @@ hexyl() {
     tar zxvf $hexyl.tar.gz && mv ${hexyl}/hexyl ${bin_path}
 }
 
-btop() {
+btop()
+{
     btop_version="v1.4.0"
     btop="btop-x86_64-linux-musl.tbz"
     btop_url="https://github.com/aristocratos/btop/releases/download/${btop_version}/${btop}"
@@ -222,7 +224,8 @@ btop() {
     tar xvf $btop && mv btop/bin/btop ${bin_path}
 }
 
-fastfetch() {
+fastfetch()
+{
     fastfetch_version="2.35.0"
     fastfetch="fastfetch-musl-amd64"
     fastfetch_url="https://github.com/fastfetch-cli/fastfetch/releases/download/${fastfetch_version}/${fastfetch}.tar.gz"
@@ -233,7 +236,8 @@ fastfetch() {
     tar zxvf ${fastfetch}.tar.gz && mv ${fastfetch}/usr/bin/fastfetch ${bin_path}
 }
 
-hyperfine() {
+hyperfine()
+{
     hyperfine_version="v1.19.0"
     hyperfine="hyperfine-${hyperfine_version}-x86_64-unknown-linux-musl"
     hyperfine_url="https://github.com/sharkdp/hyperfine/releases/download/${hyperfine_version}/${hyperfine}.tar.gz"
