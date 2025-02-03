@@ -248,6 +248,30 @@ hyperfine()
     tar zxvf ${hyperfine}.tar.gz && mv ${hyperfine}/hyperfine ${bin_path}
 }
 
+tig()
+{
+    tig="tig-2.5.11"
+    tig_url="https://github.com/jonas/tig/releases/download/${tig}/${tig}.tar.gz"
+
+    curl -LJO $tig_url
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+    tar zxvf ${tig}.tar.gz && make -C ${tig} -j $cores && mv ${tig}/src/tig ${bin_path}
+}
+
+vifm()
+{
+    vifm_version="0.13"
+    vifm="vifm-${vifm_version}"
+    vifm_url="https://github.com/vifm/vifm/releases/download/v${vifm_version}/${vifm}.tar.bz2"
+
+    curl -LJO $vifm_url
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+    tar xvf ${vifm}.tar.bz2 && cd ${vifm}
+    ./configure && make -j $cores && mv ./src/vifm ${bin_path} && cd ..
+}
+
 main()
 {
     [ ! -d ${bin_path} ] && mkdir ${bin_path}
@@ -270,7 +294,25 @@ main()
         fi
     done
 
+    if [[ "$1" && ( "$1" == "-a" || "$1" == "--all" ) ]]; then
+        echo "=== start to generate extra tools ===" && echo
+        for i in ${bin_build_list[@]}; do
+            if [ -f "$bin_path/$i" ]; then
+                echo "=== ${i} already done here ===" && echo
+                continue
+            fi
+
+            echo "=== start to download & build ${i} ==="
+            $i
+            if [ $? -eq 0 ]; then
+                echo "=== ${i} download & build successful ===" && echo
+            else
+                echo "=== ${i} download & build failed ===" && return 1
+            fi
+        done
+    fi
+
     cd .. && rm -rf tmp
 }
 
-main
+main $*

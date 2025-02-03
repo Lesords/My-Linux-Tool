@@ -1,5 +1,6 @@
 #!/bin/bash
 
+cores="$(($(nproc) / 2))"
 bin_path="$PWD/bin"
 lib_path="$PWD/lib"
 bin_list=(
@@ -22,4 +23,8 @@ bin_list=(
     btop
     fastfetch
     hyperfine
+)
+bin_build_list=(
+    tig
+    vifm
 )
