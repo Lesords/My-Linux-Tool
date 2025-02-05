@@ -248,6 +248,18 @@ hyperfine()
     tar zxvf ${hyperfine}.tar.gz && mv ${hyperfine}/hyperfine ${bin_path}
 }
 
+filebrowser()
+{
+    filebrowser_version="v2.32.0"
+    filebrowser="linux-amd64-filebrowser"
+    filebrowser_url="https://github.com/filebrowser/filebrowser/releases/download/${filebrowser_version}/${filebrowser}.tar.gz"
+
+    curl -LJO $filebrowser_url
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+    tar zxvf ${filebrowser}.tar.gz && mv "filebrowser" ${bin_path}
+}
+
 tig()
 {
     tig="tig-2.5.11"

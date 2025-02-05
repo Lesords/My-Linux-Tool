@@ -23,6 +23,7 @@ bin_list=(
     btop
     fastfetch
     hyperfine
+    filebrowser
 )
 bin_build_list=(
     tig
