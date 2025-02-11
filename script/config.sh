@@ -14,7 +14,6 @@ bin_list=(
     icdiff
     delta
     fzf
-    gtags
     clangd
     bear
     ttyper
@@ -26,6 +25,7 @@ bin_list=(
     filebrowser
 )
 bin_build_list=(
+    gtags
     tig
     vifm
 )

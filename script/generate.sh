@@ -122,21 +122,6 @@ fzf()
     tar zxvf $fzf && mv "fzf" ${bin_path}
 }
 
-gtags()
-{
-    cwd=$PWD
-    gtags_version="6.6.12"
-    gtags="global-${gtags_version}.tar.gz"
-    gtags_url="https://ftp.gnu.org/gnu/global/${gtags}"
-
-    curl -LJO $gtags_url && tar zxvf $gtags
-
-    cd "global-${gtags_version}" && mkdir build
-    ./configure --prefix=$PWD/build && make -j5 && make install && mv build/bin/* ${bin_path}
-
-    cd $cwd
-}
-
 clangd()
 {
     clangd="clangd-10_10.0.0-4ubuntu1~18.04.2_amd64.deb"
@@ -258,6 +243,26 @@ filebrowser()
     [ $? -ne 0 ] && echo "curl failed here" && return 1
 
     tar zxvf ${filebrowser}.tar.gz && mv "filebrowser" ${bin_path}
+}
+
+gtags()
+{
+    cwd=$PWD
+    gtags_version="6.6.12"
+    gtags="global-${gtags_version}.tar.gz"
+    gtags_url="https://ftp.gnu.org/gnu/global/${gtags}"
+
+    curl -LJO $gtags_url && tar zxvf $gtags
+
+    cd "global-${gtags_version}" && mkdir build
+
+    if [ "`dpkg -l | grep -E ncurses.*-dev`" ]; then
+        ./configure --prefix=$PWD/build && make -j5 && make install && mv build/bin/* ${bin_path}
+    else
+        ./configure --disable-gtagscscope --prefix=$PWD/build && make -j5 && make install && mv build/bin/* ${bin_path}
+    fi
+
+    cd $cwd
 }
 
 tig()
