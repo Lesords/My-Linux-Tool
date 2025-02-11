@@ -270,6 +270,11 @@ tig()
     tig="tig-2.5.11"
     tig_url="https://github.com/jonas/tig/releases/download/${tig}/${tig}.tar.gz"
 
+    if [ -z "`dpkg -l | grep -E ncurses.*-dev`" ]; then
+        echo "Missing libncurses-dev library"
+        return 0
+    fi
+
     curl -LJO $tig_url
     [ $? -ne 0 ] && echo "curl failed here" && return 1
 
@@ -281,6 +286,11 @@ vifm()
     vifm_version="0.13"
     vifm="vifm-${vifm_version}"
     vifm_url="https://github.com/vifm/vifm/releases/download/v${vifm_version}/${vifm}.tar.bz2"
+
+    if [ -z "`dpkg -l | grep -E ncurses.*-dev`" ]; then
+        echo "Missing libncurses-dev library"
+        return 0
+    fi
 
     curl -LJO $vifm_url
     [ $? -ne 0 ] && echo "curl failed here" && return 1
