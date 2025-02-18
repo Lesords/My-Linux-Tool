@@ -211,8 +211,8 @@ btop()
 
 fastfetch()
 {
-    fastfetch_version="2.35.0"
-    fastfetch="fastfetch-musl-amd64"
+    fastfetch_version="2.36.1"
+    fastfetch="fastfetch-linux-amd64" # "fastfetch-musl-amd64" not work
     fastfetch_url="https://github.com/fastfetch-cli/fastfetch/releases/download/${fastfetch_version}/${fastfetch}.tar.gz"
 
     curl -LJO $fastfetch_url
