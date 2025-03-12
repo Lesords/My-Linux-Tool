@@ -168,7 +168,6 @@ ttyper()
 
     curl -LJO $ttyper_url
     [ $? -ne 0 ] && echo "curl failed here" && return 1
-    https://github.com/max-niederman/ttyper/releases/download/v1.5.0/ttyper-x86_64-unknown-linux-musl.tar.gz
 
     tar zxvf ${ttyper}.tar.gz && mv ttyper ${bin_path}
 }
