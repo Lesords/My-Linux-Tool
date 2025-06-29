@@ -37,7 +37,7 @@ diff-so-fancy()
 
 lazygit()
 {
-    lazygit_version="0.45.2"
+    lazygit_version="0.52.0"
     lazygit="lazygit_${lazygit_version}_Linux_x86_64"
     lazygit_url="https://github.com/jesseduffield/lazygit/releases/download/v${lazygit_version}/${lazygit}.tar.gz"
 
@@ -49,7 +49,7 @@ lazygit()
 
 rg()
 {
-    rg_version="14.1.0"
+    rg_version="14.1.1"
     rg="ripgrep-${rg_version}-x86_64-unknown-linux-musl"
     rg_url="https://github.com/BurntSushi/ripgrep/releases/download/${rg_version}/${rg}.tar.gz"
 
@@ -73,7 +73,7 @@ tokei()
 
 joshuto()
 {
-    joshuto_version="v0.9.6"
+    joshuto_version="v0.9.9"
     joshuto="joshuto-${joshuto_version}-x86_64-unknown-linux-musl"
     joshuto_url="https://github.com/kamiyaa/joshuto/releases/download/${joshuto_version}/${joshuto}.tar.gz"
 
@@ -112,7 +112,7 @@ delta()
 
 fzf()
 {
-    fzf_version="0.58.0"
+    fzf_version="0.63.0"
     fzf="fzf-${fzf_version}-linux_amd64.tar.gz"
     fzf_url="https://github.com/junegunn/fzf/releases/download/v${fzf_version}/${fzf}"
 
@@ -198,7 +198,7 @@ hexyl()
 
 btop()
 {
-    btop_version="v1.4.0"
+    btop_version="v1.4.3"
     btop="btop-x86_64-linux-musl.tbz"
     btop_url="https://github.com/aristocratos/btop/releases/download/${btop_version}/${btop}"
 
@@ -210,7 +210,11 @@ btop()
 
 fastfetch()
 {
-    fastfetch_version="2.36.1"
+    fastfetch_version="2.46.0"
+    if [ -z "$(strings /lib/x86_64-linux-gnu/libc.so.6 | grep GLIBC_2.34)" ]; then
+        fastfetch_version="2.40.0"
+    fi
+
     fastfetch="fastfetch-linux-amd64" # "fastfetch-musl-amd64" not work
     fastfetch_url="https://github.com/fastfetch-cli/fastfetch/releases/download/${fastfetch_version}/${fastfetch}.tar.gz"
 
@@ -234,7 +238,7 @@ hyperfine()
 
 filebrowser()
 {
-    filebrowser_version="v2.32.0"
+    filebrowser_version="v2.33.10"
     filebrowser="linux-amd64-filebrowser"
     filebrowser_url="https://github.com/filebrowser/filebrowser/releases/download/${filebrowser_version}/${filebrowser}.tar.gz"
 
@@ -247,7 +251,7 @@ filebrowser()
 gtags()
 {
     cwd=$PWD
-    gtags_version="6.6.12"
+    gtags_version="6.6.14"
     gtags="global-${gtags_version}.tar.gz"
     gtags_url="https://ftp.gnu.org/gnu/global/${gtags}"
 
@@ -266,7 +270,7 @@ gtags()
 
 tig()
 {
-    tig="tig-2.5.11"
+    tig="tig-2.5.12"
     tig_url="https://github.com/jonas/tig/releases/download/${tig}/${tig}.tar.gz"
 
     if [ -z "`dpkg -l | grep -E ncurses.*-dev`" ]; then
@@ -282,7 +286,7 @@ tig()
 
 vifm()
 {
-    vifm_version="0.13"
+    vifm_version="0.14.3"
     vifm="vifm-${vifm_version}"
     vifm_url="https://github.com/vifm/vifm/releases/download/v${vifm_version}/${vifm}.tar.bz2"
 
