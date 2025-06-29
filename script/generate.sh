@@ -1,11 +1,14 @@
 #!/bin/bash
 
+build_all="no"
+build_platform="x86_64"
+
 source "./script/config.sh"
 
 bat()
 {
     bat_version="v0.25.0"
-    bat="bat-${bat_version}-x86_64-unknown-linux-gnu"
+    bat="bat-${bat_version}-${build_platform}-unknown-linux-gnu"
     bat_url="https://github.com/sharkdp/bat/releases/download/${bat_version}/${bat}.tar.gz"
 
     curl -LJO $bat_url
@@ -16,7 +19,7 @@ bat()
 
 ctags()
 {
-    ctags="uctags-2024.02.04-linux-x86_64"
+    ctags="uctags-2024.02.04-linux-${build_platform}"
     ctags_url="https://github.com/universal-ctags/ctags-nightly-build/releases/download/2024.02.04%2B6c5cba02f4bbb8549f74250490c9cda27b7b48c6/${ctags}.tar.xz"
 
     curl -LJO $ctags_url
@@ -39,6 +42,9 @@ lazygit()
 {
     lazygit_version="0.52.0"
     lazygit="lazygit_${lazygit_version}_Linux_x86_64"
+    if [ "$build_platform" == "aarch64" ]; then
+        lazygit="lazygit_${lazygit_version}_Linux_arm64"
+    fi
     lazygit_url="https://github.com/jesseduffield/lazygit/releases/download/v${lazygit_version}/${lazygit}.tar.gz"
 
     curl -LJO $lazygit_url
@@ -51,6 +57,9 @@ rg()
 {
     rg_version="14.1.1"
     rg="ripgrep-${rg_version}-x86_64-unknown-linux-musl"
+    if [ "$build_platform" == "aarch64" ]; then
+        rg="ripgrep-${rg_version}-aarch64-unknown-linux-gnu"
+    fi
     rg_url="https://github.com/BurntSushi/ripgrep/releases/download/${rg_version}/${rg}.tar.gz"
 
     curl -LJO $rg_url
@@ -62,7 +71,7 @@ rg()
 tokei()
 {
     tokei_version="v13.0.0-alpha.0"
-    tokei="tokei-x86_64-unknown-linux-gnu.tar.gz"
+    tokei="tokei-${build_platform}-unknown-linux-gnu.tar.gz"
     tokei_url="https://github.com/XAMPPRocky/tokei/releases/download/${tokei_version}/${tokei}"
 
     curl -LJO $tokei_url
@@ -74,7 +83,7 @@ tokei()
 joshuto()
 {
     joshuto_version="v0.9.9"
-    joshuto="joshuto-${joshuto_version}-x86_64-unknown-linux-musl"
+    joshuto="joshuto-${joshuto_version}-${build_platform}-unknown-linux-musl"
     joshuto_url="https://github.com/kamiyaa/joshuto/releases/download/${joshuto_version}/${joshuto}.tar.gz"
 
     curl -LJO $joshuto_url
@@ -102,6 +111,9 @@ delta()
 {
     delta_version="0.18.2"
     delta="git-delta-musl_${delta_version}_amd64.deb"
+    if [ "$build_platform" == "aarch64" ]; then
+        delta="git-delta_${delta_version}_arm64.deb"
+    fi
     delta_url="https://github.com/dandavison/delta/releases/download/${delta_version}/${delta}"
 
     curl -LJO $delta_url
@@ -114,6 +126,9 @@ fzf()
 {
     fzf_version="0.63.0"
     fzf="fzf-${fzf_version}-linux_amd64.tar.gz"
+    if [ "$build_platform" == "aarch64" ]; then
+        fzf="fzf-${fzf_version}-linux_arm64.tar.gz"
+    fi
     fzf_url="https://github.com/junegunn/fzf/releases/download/v${fzf_version}/${fzf}"
 
     curl -LJO $fzf_url
@@ -163,7 +178,7 @@ bear()
 ttyper()
 {
     ttyper_version="v1.6.0"
-    ttyper="ttyper-x86_64-unknown-linux-musl"
+    ttyper="ttyper-${build_platform}-unknown-linux-musl"
     ttyper_url="https://github.com/max-niederman/ttyper/releases/download/${ttyper_version}/${ttyper}.tar.gz"
 
     curl -LJO $ttyper_url
@@ -175,7 +190,7 @@ ttyper()
 fd()
 {
     fd_version="v10.2.0"
-    fd="fd-${fd_version}-x86_64-unknown-linux-musl"
+    fd="fd-${fd_version}-${build_platform}-unknown-linux-musl"
     fd_url="https://github.com/sharkdp/fd/releases/download/${fd_version}/${fd}.tar.gz"
 
     curl -LJO $fd_url
@@ -188,6 +203,9 @@ hexyl()
 {
     hexyl_version="v0.16.0"
     hexyl="hexyl-${hexyl_version}-x86_64-unknown-linux-musl"
+    if [ "$build_platform" == "aarch64" ]; then
+        hexyl="hexyl-${hexyl_version}-arm-unknown-linux-musleabihf"
+    fi
     hexyl_url="https://github.com/sharkdp/hexyl/releases/download/${hexyl_version}/${hexyl}.tar.gz"
 
     curl -LJO $hexyl_url
@@ -199,7 +217,7 @@ hexyl()
 btop()
 {
     btop_version="v1.4.3"
-    btop="btop-x86_64-linux-musl.tbz"
+    btop="btop-${build_platform}-linux-musl.tbz"
     btop_url="https://github.com/aristocratos/btop/releases/download/${btop_version}/${btop}"
 
     curl -LJO $btop_url
@@ -216,6 +234,9 @@ fastfetch()
     fi
 
     fastfetch="fastfetch-linux-amd64" # "fastfetch-musl-amd64" not work
+    if [ "$build_platform" == "aarch64" ]; then
+        fastfetch="fastfetch-linux-aarch64"
+    fi
     fastfetch_url="https://github.com/fastfetch-cli/fastfetch/releases/download/${fastfetch_version}/${fastfetch}.tar.gz"
 
     curl -LJO $fastfetch_url
@@ -228,6 +249,9 @@ hyperfine()
 {
     hyperfine_version="v1.19.0"
     hyperfine="hyperfine-${hyperfine_version}-x86_64-unknown-linux-musl"
+    if [ "$build_platform" == "aarch64" ]; then
+        hyperfine="hyperfine-${hyperfine_version}-arm-unknown-linux-musleabihf"
+    fi
     hyperfine_url="https://github.com/sharkdp/hyperfine/releases/download/${hyperfine_version}/${hyperfine}.tar.gz"
 
     curl -LJO $hyperfine_url
@@ -240,6 +264,9 @@ filebrowser()
 {
     filebrowser_version="v2.33.10"
     filebrowser="linux-amd64-filebrowser"
+    if [ "$build_platform" == "aarch64" ]; then
+        filebrowser="linux-arm64-filebrowser"
+    fi
     filebrowser_url="https://github.com/filebrowser/filebrowser/releases/download/${filebrowser_version}/${filebrowser}.tar.gz"
 
     curl -LJO $filebrowser_url
@@ -324,7 +351,7 @@ main()
         fi
     done
 
-    if [[ "$1" && ( "$1" == "-a" || "$1" == "--all" ) ]]; then
+    if [[ "$build_all" == "yes" ]]; then
         echo "=== start to generate extra tools ===" && echo
         for i in ${bin_build_list[@]}; do
             if [ -f "$bin_path/$i" ]; then
@@ -345,4 +372,16 @@ main()
     cd .. && rm -rf tmp
 }
 
-main $*
+while [ $# -ge 1 ]; do
+    case $1 in
+        -a|--all)
+            build_all="yes"
+            ;;
+        --arm|--arm64)
+            build_platform="aarch64"
+            ;;
+    esac
+    shift
+done
+
+main
