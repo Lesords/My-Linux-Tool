@@ -10,8 +10,13 @@ dst_lib_path="$HOME/.local/lib"
 
 echo "=== start to copy file ==="
 
-rsync -av ${bin_path}/* ${dst_path}
-rsync -av ${lib_path}/* ${dst_lib_path}
+if type rsync >/dev/null 2>&1; then
+    rsync -av ${bin_path}/* ${dst_path}
+    rsync -av ${lib_path}/* ${dst_lib_path}
+else
+    cp -rf ${bin_path}/* ${dst_path}
+    cp -rf ${lib_path}/* ${dst_lib_path}
+fi
 
 if [ $? -eq 0 ]; then
     echo "=== All files copied successfully ==="
