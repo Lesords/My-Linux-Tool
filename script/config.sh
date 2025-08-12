@@ -3,6 +3,7 @@
 cores="$(($(nproc) / 2))"
 bin_path="$PWD/bin"
 lib_path="$PWD/lib"
+config_path="$PWD/config"
 bin_list=(
     bat
     ctags

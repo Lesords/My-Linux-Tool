@@ -283,11 +283,15 @@ mihomo()
         mihomo="mihomo-linux-arm64-${mihomo_version}.deb"
     fi
     mihomo_url="https://github.com/MetaCubeX/mihomo/releases/download/${mihomo_version}/${mihomo}"
+    mmdb_version="20250812"
+    mmdb_url="https://github.com/Dreamacro/maxmind-geoip/releases/download/${mmdb_version}/Country.mmdb"
 
     curl -LJO $mihomo_url
     [ $? -ne 0 ] && echo "curl failed here" && return 1
+    curl -LJO $mmdb_url
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
 
-    dpkg -x ${mihomo} . && mv "usr/bin/mihomo" ${bin_path}
+    dpkg -x ${mihomo} . && mv "usr/bin/mihomo" ${bin_path} && mv "Country.mmdb" ${config_path}
 }
 
 gtags()
@@ -348,6 +352,7 @@ main()
 {
     [ ! -d ${bin_path} ] && mkdir ${bin_path}
     [ ! -d ${lib_path} ] && mkdir ${lib_path}
+    [ ! -d ${config_path} ] && mkdir ${config_path}
     [ -d tmp ] && rm -rf ./tmp
     mkdir tmp && cd tmp
 
