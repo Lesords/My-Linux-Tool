@@ -275,6 +275,21 @@ filebrowser()
     tar zxvf ${filebrowser}.tar.gz && mv "filebrowser" ${bin_path}
 }
 
+mihomo()
+{
+    mihomo_version="v1.19.12"
+    mihomo="mihomo-linux-386-${mihomo_version}.deb"
+    if [ "$build_platform" == "aarch64" ]; then
+        mihomo="mihomo-linux-arm64-${mihomo_version}.deb"
+    fi
+    mihomo_url="https://github.com/MetaCubeX/mihomo/releases/download/${mihomo_version}/${mihomo}"
+
+    curl -LJO $mihomo_url
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+    dpkg -x ${mihomo} . && mv "usr/bin/mihomo" ${bin_path}
+}
+
 gtags()
 {
     cwd=$PWD

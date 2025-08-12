@@ -23,6 +23,7 @@ bin_list=(
     fastfetch
     hyperfine
     filebrowser
+    mihomo
 )
 bin_build_list=(
     gtags
