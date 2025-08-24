@@ -25,6 +25,7 @@ bin_list=(
     hyperfine
     filebrowser
     mihomo
+    yazi
 )
 bin_build_list=(
     gtags

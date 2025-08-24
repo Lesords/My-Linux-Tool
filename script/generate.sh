@@ -294,6 +294,21 @@ mihomo()
     dpkg -x ${mihomo} . && mv "usr/bin/mihomo" ${bin_path} && mv "Country.mmdb" ${config_path}
 }
 
+yazi()
+{
+    yazi_version="v25.5.31"
+    yazi="yazi-x86_64-unknown-linux-musl"
+    if [ "$build_platform" == "aarch64" ]; then
+        yazi="yazi-aarch64-unknown-linux-musl"
+    fi
+    yazi_url="https://github.com/sxyazi/yazi/releases/download/${yazi_version}/${yazi}.zip"
+
+    curl -LJO $yazi_url
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+    unzip ${yazi}.zip && mv ${yazi}/ya* ${bin_path}
+}
+
 gtags()
 {
     cwd=$PWD
