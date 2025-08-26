@@ -28,6 +28,7 @@ bin_list=(
     yazi
     node
     exa
+    choose
 )
 bin_build_list=(
     gtags

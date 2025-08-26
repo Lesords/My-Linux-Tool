@@ -339,6 +339,21 @@ exa()
     unzip ${exa}.zip && mv bin/exa ${bin_path}
 }
 
+choose()
+{
+    choose_version="v1.3.7"
+    choose="choose-x86_64-unknown-linux-musl"
+    if [ "$build_platform" == "aarch64" ]; then
+        choose="choose-aarch64-unknown-linux-gnu"
+    fi
+    choose_url="https://github.com/theryangeary/choose/releases/download/${choose_version}/${choose}"
+
+    curl -LJO $choose_url
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+    chmod u+x ${choose} && mv ${choose} ${bin_path}/choose
+}
+
 gtags()
 {
     cwd=$PWD
