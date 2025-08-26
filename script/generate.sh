@@ -309,6 +309,21 @@ yazi()
     unzip ${yazi}.zip && mv ${yazi}/ya* ${bin_path}
 }
 
+node()
+{
+    node_version="v22.18.0"
+    node="node-${node_version}-linux-x64"
+    if [ "$build_platform" == "aarch64" ]; then
+        node="node-${node_version}-linux-arm64"
+    fi
+    node_url="https://nodejs.org/dist/${node_version}/${node}.tar.xz"
+
+    curl -LJO $node_url
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+    tar -Jxvf ${node}.tar.xz && mv ${node}/bin/* ${bin_path} && mv ${node}/lib/node_modules ${lib_path}
+}
+
 gtags()
 {
     cwd=$PWD

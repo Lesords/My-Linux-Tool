@@ -26,6 +26,7 @@ bin_list=(
     filebrowser
     mihomo
     yazi
+    node
 )
 bin_build_list=(
     gtags
