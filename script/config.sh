@@ -27,6 +27,7 @@ bin_list=(
     mihomo
     yazi
     node
+    exa
 )
 bin_build_list=(
     gtags

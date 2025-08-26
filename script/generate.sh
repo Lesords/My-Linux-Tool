@@ -324,6 +324,21 @@ node()
     tar -Jxvf ${node}.tar.xz && mv ${node}/bin/* ${bin_path} && mv ${node}/lib/node_modules ${lib_path}
 }
 
+exa()
+{
+    exa_version="v0.10.1"
+    exa="exa-linux-x86_64-musl-${exa_version}"
+    if [ "$build_platform" == "aarch64" ]; then
+        exa="exa-linux-armv7-${exa_version}"
+    fi
+    exa_url="https://github.com/ogham/exa/releases/download/${exa_version}/${exa}.zip"
+
+    curl -LJO $exa_url
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+    unzip ${exa}.zip && mv bin/exa ${bin_path}
+}
+
 gtags()
 {
     cwd=$PWD
