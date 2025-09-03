@@ -354,6 +354,21 @@ choose()
     chmod u+x ${choose} && mv ${choose} ${bin_path}/choose
 }
 
+zoxide()
+{
+    zoxide_version="0.9.8"
+    zoxide="zoxide-${zoxide_version}-x86_64-unknown-linux-musl"
+    if [ "$build_platform" == "aarch64" ]; then
+        zoxide="zoxide-${zoxide_version}-aarch64-unknown-linux-musl"
+    fi
+    zoxide_url="https://github.com/ajeetdsouza/zoxide/releases/download/v${zoxide_version}/${zoxide}.tar.gz"
+
+    curl -LJO $zoxide_url
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+    tar zxvf ${zoxide}.tar.gz && mv zoxide ${bin_path}
+}
+
 gtags()
 {
     cwd=$PWD

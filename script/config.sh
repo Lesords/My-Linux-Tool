@@ -29,6 +29,7 @@ bin_list=(
     node
     exa
     choose
+    zoxide
 )
 bin_build_list=(
     gtags
