@@ -369,6 +369,21 @@ zoxide()
     tar zxvf ${zoxide}.tar.gz && mv zoxide ${bin_path}
 }
 
+copilot()
+{
+    copilot_version="v0.0.389"
+    copilot="copilot-linux-x64"
+    if [ "$build_platform" == "aarch64" ]; then
+        copilot="copilot-linux-arm64"
+    fi
+    copilot_url="https://github.com/github/copilot-cli/releases/download/${copilot_version}/${copilot}.tar.gz"
+
+    curl -LJO $copilot_url
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+    tar zxvf ${copilot}.tar.gz && mv copilot ${bin_path}
+}
+
 gtags()
 {
     cwd=$PWD

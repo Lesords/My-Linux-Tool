@@ -30,6 +30,7 @@ bin_list=(
     exa
     choose
     zoxide
+    copilot
 )
 bin_build_list=(
     gtags
