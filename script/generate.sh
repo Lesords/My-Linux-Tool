@@ -139,6 +139,28 @@ fzf()
 
 clangd()
 {
+    use_new_clangd=0
+    if [ -f /etc/os-release ]; then
+        . /etc/os-release
+        if [ "$ID" = "ubuntu" ]; then
+             if [ "$(echo "$VERSION_ID > 18.04" | bc)" -eq 1 ]; then
+                 use_new_clangd=1
+             fi
+        fi
+    fi
+
+    if [ "$use_new_clangd" -eq 1 ]; then
+        clangd_version="21.1.8"
+        clangd="clangd-linux-${clangd_version}.zip"
+        clangd_url="https://github.com/clangd/clangd/releases/download/${clangd_version}/${clangd}"
+
+        curl -LJO $clangd_url
+        [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+        unzip ${clangd} && mv clangd_${clangd_version}/bin/clangd ${bin_path}
+        return 0
+    fi
+
     clangd="clangd-10_10.0.0-4ubuntu1~18.04.2_amd64.deb"
     clangd_url="https://launchpadlibrarian.net/488890559/${clangd}"
     libclangd="libclang-cpp10_10.0.0-4ubuntu1_amd64.deb"
