@@ -40,10 +40,10 @@ diff-so-fancy()
 
 lazygit()
 {
-    lazygit_version="0.52.0"
-    lazygit="lazygit_${lazygit_version}_Linux_x86_64"
+    lazygit_version="0.58.1"
+    lazygit="lazygit_${lazygit_version}_linux_x86_64"
     if [ "$build_platform" == "aarch64" ]; then
-        lazygit="lazygit_${lazygit_version}_Linux_arm64"
+        lazygit="lazygit_${lazygit_version}_linux_arm64"
     fi
     lazygit_url="https://github.com/jesseduffield/lazygit/releases/download/v${lazygit_version}/${lazygit}.tar.gz"
 
