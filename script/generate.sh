@@ -406,6 +406,21 @@ copilot()
     tar zxvf ${copilot}.tar.gz && mv copilot ${bin_path}
 }
 
+tree-sitter()
+{
+    treesitter_version="v0.26.7"
+    treesitter="tree-sitter-linux-x86"
+    if [ "$build_platform" == "aarch64" ]; then
+        copilot="tree-sitter-linux-arm64"
+    fi
+    treesitter_url="https://github.com/tree-sitter/tree-sitter/releases/download/${treesitter_version}/${treesitter}.gz"
+
+    curl -LJO ${treesitter_url}
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+    gzip -d ${treesitter}.gz && chmod u+x ${treesitter} && mv ${treesitter} "${bin_path}/tree-sitter"
+}
+
 gtags()
 {
     cwd=$PWD
