@@ -421,6 +421,21 @@ tree-sitter()
     gzip -d ${treesitter}.gz && chmod u+x ${treesitter} && mv ${treesitter} "${bin_path}/tree-sitter"
 }
 
+zellij()
+{
+    zellij_version="v0.43.1"
+    zellij="zellij-x86_64-unknown-linux-musl"
+    if [ "$build_platform" == "aarch64" ]; then
+        zellij="zellij-aarch64-unknown-linux-musl"
+    fi
+    zellij_url="https://github.com/zellij-org/zellij/releases/download/${zellij_version}/${zellij}.tar.gz"
+
+    curl -LJO ${zellij_url}
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+    tar zxvf ${zellij}.tar.gz && mv zellij ${bin_path}
+}
+
 gtags()
 {
     cwd=$PWD

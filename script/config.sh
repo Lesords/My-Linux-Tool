@@ -32,6 +32,7 @@ bin_list=(
     zoxide
     copilot
     tree-sitter
+    zellij
 )
 bin_build_list=(
     gtags
