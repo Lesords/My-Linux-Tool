@@ -147,6 +147,9 @@ clangd()
                  use_new_clangd=1
              fi
         fi
+        if [ "$ID" = "fedora" ]; then
+            use_new_clangd=1
+        fi
     fi
 
     if [ "$use_new_clangd" -eq 1 ]; then
