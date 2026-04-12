@@ -33,6 +33,7 @@ bin_list=(
     copilot
     tree-sitter
     zellij
+    greenclip
 )
 bin_build_list=(
     gtags

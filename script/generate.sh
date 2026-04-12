@@ -439,6 +439,18 @@ zellij()
     tar zxvf ${zellij}.tar.gz && mv zellij ${bin_path}
 }
 
+greenclip()
+{
+    greenclip_version="v4.2"
+    greenclip="greenclip"
+    greenclip_url="https://github.com/erebe/greenclip/releases/download/${greenclip_version}/${greenclip}"
+    
+    curl -LJO ${greenclip_url}
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+    chmod u+x ${greenclip} && mv ${greenclip} ${bin_path}
+}
+
 gtags()
 {
     cwd=$PWD
