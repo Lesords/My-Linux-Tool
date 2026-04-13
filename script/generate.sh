@@ -451,6 +451,21 @@ greenclip()
     chmod u+x ${greenclip} && mv ${greenclip} ${bin_path}
 }
 
+superfile()
+{
+    superfile_version="v1.5.0"
+    superfile="superfile-linux-${superfile_version}-amd64"
+    if [ "$build_platform" == "aarch64" ]; then
+        superfile="superfile-linux-${superfile_version}-arm64"
+    fi
+    superfile_url="https://github.com/yorukot/superfile/releases/download/${superfile_version}/${superfile}.tar.gz"
+
+    curl -LJO ${superfile_url}
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+    tar zxvf ${superfile}.tar.gz && mv dist/${superfile}/spf ${bin_path}/superfile
+}
+
 gtags()
 {
     cwd=$PWD

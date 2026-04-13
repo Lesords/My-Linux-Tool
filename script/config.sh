@@ -34,6 +34,7 @@ bin_list=(
     tree-sitter
     zellij
     greenclip
+    superfile
 )
 bin_build_list=(
     gtags
