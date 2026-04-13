@@ -40,7 +40,7 @@ diff-so-fancy()
 
 lazygit()
 {
-    lazygit_version="0.58.1"
+    lazygit_version="0.61.0"
     lazygit="lazygit_${lazygit_version}_linux_x86_64"
     if [ "$build_platform" == "aarch64" ]; then
         lazygit="lazygit_${lazygit_version}_linux_arm64"
@@ -321,7 +321,7 @@ mihomo()
 
 yazi()
 {
-    yazi_version="v25.5.31"
+    yazi_version="v26.1.22"
     yazi="yazi-x86_64-unknown-linux-musl"
     if [ "$build_platform" == "aarch64" ]; then
         yazi="yazi-aarch64-unknown-linux-musl"
