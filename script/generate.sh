@@ -364,6 +364,21 @@ exa()
     unzip ${exa}.zip && mv bin/exa ${bin_path}
 }
 
+duf()
+{
+    duf_version="0.9.1"
+    duf="duf_${duf_version}_linux_x86_64"
+    if [ "$build_platform" == "aarch64" ]; then
+        duf="duf_${duf_version}_linux_arm64"
+    fi
+    duf_url="https://github.com/muesli/duf/releases/download/v${duf_version}/${duf}.tar.gz"
+
+    curl -LJO $duf_url
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+    tar zxvf ${duf}.tar.gz && mv duf ${bin_path}
+}
+
 choose()
 {
     choose_version="v1.3.7"

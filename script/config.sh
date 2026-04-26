@@ -28,6 +28,7 @@ bin_list=(
     yazi
     node
     exa
+    duf
     choose
     zoxide
     copilot
