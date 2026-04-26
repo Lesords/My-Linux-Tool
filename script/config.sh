@@ -34,6 +34,7 @@ bin_list=(
     zoxide
     copilot
     tree-sitter
+    jless
     zellij
     greenclip
     superfile

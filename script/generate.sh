@@ -454,6 +454,18 @@ tree-sitter()
     gzip -d ${treesitter}.gz && chmod u+x ${treesitter} && mv ${treesitter} "${bin_path}/tree-sitter"
 }
 
+jless()
+{
+    jless_version="v0.9.0"
+    jless="jless-${jless_version}-x86_64-unknown-linux-gnu"
+    jless_url="https://github.com/PaulJuliusMartinez/jless/releases/download/${jless_version}/${jless}.zip"
+
+    curl -LJO ${jless_url}
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+    unzip ${jless}.zip && mv jless ${bin_path}
+}
+
 zellij()
 {
     zellij_version="v0.43.1"
