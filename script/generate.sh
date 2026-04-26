@@ -508,6 +508,21 @@ superfile()
     tar zxvf ${superfile}.tar.gz && mv dist/${superfile}/spf ${bin_path}/superfile
 }
 
+cb()
+{
+    cb_version="0.10.0"
+    cb="clipboard-linux-amd64"
+    if [ "$build_platform" == "aarch64" ]; then
+        cb="clipboard-linux-arm64"
+    fi
+    cb_url="https://github.com/Slackadays/Clipboard/releases/download/${cb_version}/${cb}.zip"
+
+    curl -LJO ${cb_url}
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+    unzip ${cb}.zip && mv bin/cb ${bin_path}
+}
+
 gtags()
 {
     cwd=$PWD

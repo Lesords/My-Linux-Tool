@@ -38,6 +38,7 @@ bin_list=(
     zellij
     greenclip
     superfile
+    cb
 )
 bin_build_list=(
     gtags
