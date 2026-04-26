@@ -6,6 +6,7 @@ This repository records some useful linux tools, as shown below
 - ctags
 - diff-so-fancy
 - lazygit
+- lazydocker
 - rg
 - tokei
 - joshuto
@@ -21,6 +22,20 @@ This repository records some useful linux tools, as shown below
 - fastfetch
 - hyperfine
 - filebrowser
+- mihomo
+- yazi
+- node
+- exa
+- duf
+- choose
+- zoxide
+- copilot
+- tree-sitter
+- jless
+- zellij
+- greenclip
+- superfile
+- cb
 
 Tools required to compile
 
