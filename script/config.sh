@@ -9,6 +9,7 @@ bin_list=(
     ctags
     diff-so-fancy
     lazygit
+    lazydocker
     rg
     tokei
     joshuto

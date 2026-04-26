@@ -53,6 +53,21 @@ lazygit()
     tar zxvf ${lazygit}.tar.gz && mv "lazygit" ${bin_path}
 }
 
+lazydocker()
+{
+    lazydocker_version="0.25.2"
+    lazydocker="lazydocker_${lazydocker_version}_Linux_x86_64"
+    if [ "$build_platform" == "aarch64" ]; then
+        lazydocker="lazydocker_${lazydocker_version}_Linux_arm64"
+    fi
+    lazydocker_url="https://github.com/jesseduffield/lazydocker/releases/download/v${lazydocker_version}/${lazydocker}.tar.gz"
+
+    curl -LJO $lazydocker_url
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+    tar zxvf ${lazydocker}.tar.gz && mv lazydocker ${bin_path}
+}
+
 rg()
 {
     rg_version="14.1.1"
