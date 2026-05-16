@@ -39,6 +39,7 @@ bin_list=(
     greenclip
     superfile
     cb
+    i3-window-title
 )
 bin_build_list=(
     gtags

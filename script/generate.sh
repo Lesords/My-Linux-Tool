@@ -523,6 +523,21 @@ cb()
     unzip ${cb}.zip && mv bin/cb ${bin_path}
 }
 
+i3-window-title()
+{
+    i3_window_title_version="0.4.0"
+    i3_window_title="i3-window-title_${i3_window_title_version}_Linux_x86_64"
+    if [ "$build_platform" == "aarch64" ]; then
+        i3_window_title="i3-window-title_${i3_window_title_version}_Linux_arm64"
+    fi
+    i3_window_title_url="https://github.com/nekowinston/i3-window-title/releases/download/v${i3_window_title_version}/${i3_window_title}.tar.gz"
+
+    curl -LJO ${i3_window_title_url}
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+    tar zxvf ${i3_window_title}.tar.gz && mv i3-window-title ${bin_path}
+}
+
 gtags()
 {
     cwd=$PWD
