@@ -40,6 +40,7 @@ bin_list=(
     superfile
     cb
     i3-window-title
+    tmux-fingers
 )
 bin_build_list=(
     gtags

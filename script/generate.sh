@@ -538,6 +538,18 @@ i3-window-title()
     tar zxvf ${i3_window_title}.tar.gz && mv i3-window-title ${bin_path}
 }
 
+tmux-fingers()
+{
+    tmux_fingers_version="2.6.2"
+    tmux_fingers="tmux-fingers-${tmux_fingers_version}-linux-x86_64"
+    tmux_fingers_url="https://github.com/Morantron/tmux-fingers/releases/download/${tmux_fingers_version}/${tmux_fingers}"
+
+    curl -LJO ${tmux_fingers_url}
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+    chmod u+x ${tmux_fingers} && mv ${tmux_fingers} ${bin_path}/tmux-fingers
+}
+
 gtags()
 {
     cwd=$PWD
