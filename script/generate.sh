@@ -550,6 +550,21 @@ tmux-fingers()
     chmod u+x ${tmux_fingers} && mv ${tmux_fingers} ${bin_path}/tmux-fingers
 }
 
+cmatrix()
+{
+    cmatrix_version="v2.0"
+    cmatrix="cmatrix-${cmatrix_version}-Butterscotch.tar"
+    if [ "$build_platform" == "aarch64" ]; then
+        return 0
+    fi
+    cmatrix_url="https://github.com/abishekvashok/cmatrix/releases/download/${cmatrix_version}/${cmatrix}"
+
+    curl -LJO ${cmatrix_url}
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+    tar xvf ${cmatrix} && mv ./cmatrix/cmatrix ${bin_path}
+}
+
 gtags()
 {
     cwd=$PWD
