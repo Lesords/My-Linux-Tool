@@ -565,6 +565,21 @@ cmatrix()
     tar xvf ${cmatrix} && mv ./cmatrix/cmatrix ${bin_path}
 }
 
+chafa()
+{
+    chafa_version="1.18.2"
+    chafa="chafa-${chafa_version}-1-x86_64-linux-gnu"
+    if [ "$build_platform" == "aarch64" ]; then
+        return 0
+    fi
+    chafa_url="https://hpjansson.org/chafa/releases/static/${chafa}.tar.gz"
+
+    curl -LJO ${chafa_url}
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+    tar zxvf ${chafa}.tar.gz && mv ${chafa}/chafa ${bin_path}
+}
+
 gtags()
 {
     cwd=$PWD

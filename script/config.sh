@@ -42,6 +42,7 @@ bin_list=(
     i3-window-title
     tmux-fingers
     cmatrix
+    chafa
 )
 bin_build_list=(
     gtags
