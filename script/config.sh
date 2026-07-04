@@ -43,6 +43,7 @@ bin_list=(
     tmux-fingers
     cmatrix
     chafa
+    smug
 )
 bin_build_list=(
     gtags

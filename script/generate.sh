@@ -580,6 +580,21 @@ chafa()
     tar zxvf ${chafa}.tar.gz && mv ${chafa}/chafa ${bin_path}
 }
 
+smug()
+{
+    smug_version="0.3.19"
+    smug="smug_${smug_version}_Linux_x86_64"
+    if [ "$build_platform" == "aarch64" ]; then
+        smug="smug_${smug_version}_Linux_arm64"
+    fi
+    smug_url="https://github.com/ivaaaan/smug/releases/download/v${smug_version}/${smug}.tar.gz"
+
+    curl -LJO ${smug_url}
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+    tar zxvf ${smug}.tar.gz && mv smug ${bin_path}
+}
+
 gtags()
 {
     cwd=$PWD
