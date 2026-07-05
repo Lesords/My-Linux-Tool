@@ -302,17 +302,17 @@ hyperfine()
 
 filebrowser()
 {
-    filebrowser_version="v2.33.10"
+    filebrowser_version="v1.4.0-stable"
     filebrowser="linux-amd64-filebrowser"
     if [ "$build_platform" == "aarch64" ]; then
         filebrowser="linux-arm64-filebrowser"
     fi
-    filebrowser_url="https://github.com/filebrowser/filebrowser/releases/download/${filebrowser_version}/${filebrowser}.tar.gz"
+    filebrowser_url="https://github.com/gtsteffaniak/filebrowser/releases/download/${filebrowser_version}/${filebrowser}"
 
     curl -LJO $filebrowser_url
     [ $? -ne 0 ] && echo "curl failed here" && return 1
 
-    tar zxvf ${filebrowser}.tar.gz && mv "filebrowser" ${bin_path}
+    chmod u+x ${filebrowser} && mv "${filebrowser}" ${bin_path}/filebrowser
 }
 
 mihomo()
