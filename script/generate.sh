@@ -595,6 +595,21 @@ smug()
     tar zxvf ${smug}.tar.gz && mv smug ${bin_path}
 }
 
+glow()
+{
+    glow_version="2.1.2"
+    glow="glow_${glow_version}_Linux_x86_64"
+    if [ "$build_platform" == "aarch64" ]; then
+        glow="glow_${glow_version}_Linux_arm64"
+    fi
+    glow_url="https://github.com/charmbracelet/glow/releases/download/v${glow_version}/${glow}.tar.gz"
+
+    curl -LJO ${glow_url}
+    [ $? -ne 0 ] && echo "curl failed here" && return 1
+
+    tar zxvf ${glow}.tar.gz && mv ${glow}/glow ${bin_path}
+}
+
 gtags()
 {
     cwd=$PWD

@@ -44,6 +44,7 @@ bin_list=(
     cmatrix
     chafa
     smug
+    glow
 )
 bin_build_list=(
     gtags
